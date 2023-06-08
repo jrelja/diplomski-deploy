@@ -8,9 +8,7 @@ export const useData = () => {
     const fetchData = async () => {
       try {
         const response = await graphData.get("/");
-        if (response.data) {
-          setData(response.data);
-        }
+        setData(response.data);
       } catch (err) {
         // Handle the error here if needed
         console.error(err);
@@ -21,7 +19,7 @@ export const useData = () => {
   }, []);
 
   useEffect(() => {
-    if (Array.isArray(data) && !data.some((d) => d.datum instanceof Date)) {
+    if (data && !data.some((d) => d.datum instanceof Date)) {
       const updatedData = data.map((d) => {
         d.datum = new Date(d.datum);
         if (
@@ -83,6 +81,6 @@ export const useData = () => {
       setData(updatedData);
     }
   }, [data]);
-  console.log(data);
+
   return data;
 };
