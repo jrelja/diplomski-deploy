@@ -86,6 +86,7 @@ export const GrafCijenaVrijeme = () => {
     cijena_m2: median(value, (d) => d.cijena_m2),
   }));
   medianValues.sort(ascending);
+  console.log(medianValues);
 
   const xValue = (d) => d.datum;
   const yValue = (d) => d.cijena_m2;
