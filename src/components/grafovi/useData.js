@@ -9,7 +9,7 @@ export const useData = () => {
     json(url).then((data) => {
       setData(
         data.data.map((d) => {
-          d.datum = new Date(d.datum);
+          d.data.datum = new Date(d.datum);
           if (
             d.lokacija === "Splitsko-dalmatinska, Split, Zenta" ||
             d.lokacija === "Splitsko-dalmatinska, Split, Firule"
