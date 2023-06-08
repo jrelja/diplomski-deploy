@@ -9,36 +9,27 @@ export const useData = () => {
     json(url).then((data) => {
       setData(
         data.data.map((d) => {
-          d.data.datum = new Date(d.data.datum);
+          console.log(d.datum);
+          d.datum = new Date(d.datum);
           if (
             d.lokacija === "Splitsko-dalmatinska, Split, Zenta" ||
             d.lokacija === "Splitsko-dalmatinska, Split, Firule"
           ) {
             d.lokacija = "Splitsko-dalmatinska, Split, Bačvice";
-          } else if (
-            d.lokacija === "Splitsko-dalmatinska, Split, Zvončac"
-          ) { 
+          } else if (d.lokacija === "Splitsko-dalmatinska, Split, Zvončac") {
             d.lokacija = "Splitsko-dalmatinska, Split, Meje";
           } else if (
             d.lokacija === "Splitsko-dalmatinska, Split, Pazdigrad" ||
             d.lokacija === "Splitsko-dalmatinska, Split, Duilovo"
           ) {
             d.lokacija = "Splitsko-dalmatinska, Split, Žnjan";
-          } else if (
-            d.lokacija === "Splitsko-dalmatinska, Split, Stinice"
-          ) {
+          } else if (d.lokacija === "Splitsko-dalmatinska, Split, Stinice") {
             d.lokacija = "Splitsko-dalmatinska, Split, Brda";
-          } else if (
-            d.lokacija === "Splitsko-dalmatinska, Split, Dobri"
-          ) {
+          } else if (d.lokacija === "Splitsko-dalmatinska, Split, Dobri") {
             d.lokacija = "Splitsko-dalmatinska, Split, Grad";
-          } else if (
-            d.lokacija === "Splitsko-dalmatinska, Split, Marjan"
-          ) {
+          } else if (d.lokacija === "Splitsko-dalmatinska, Split, Marjan") {
             d.lokacija = "Splitsko-dalmatinska, Split, Varoš";
-          } else if (
-            d.lokacija === "Splitsko-dalmatinska, Split, Poljud"
-          ) {
+          } else if (d.lokacija === "Splitsko-dalmatinska, Split, Poljud") {
             d.lokacija = "Splitsko-dalmatinska, Split, Spinut";
           } else if (
             d.lokacija === "Splitsko-dalmatinska, Split, Table" ||
@@ -47,9 +38,7 @@ export const useData = () => {
             d.lokacija === "Splitsko-dalmatinska, Split, Brodarica"
           ) {
             d.lokacija = "Splitsko-dalmatinska, Split, Lovret";
-          } else if (
-            d.lokacija === "Splitsko-dalmatinska, Split, Smrdečac"
-          ) {
+          } else if (d.lokacija === "Splitsko-dalmatinska, Split, Smrdečac") {
             d.lokacija = "Splitsko-dalmatinska, Split, Split 3";
           } else if (
             d.lokacija === "Splitsko-dalmatinska, Split, Lučac" ||
@@ -57,9 +46,7 @@ export const useData = () => {
             d.lokacija === "Splitsko-dalmatinska, Split, Radunica"
           ) {
             d.lokacija = "Splitsko-dalmatinska, Split, Lučac-Manuš";
-          } else if (
-            d.lokacija === "Splitsko-dalmatinska, Split, Dujmovača"
-          ) {
+          } else if (d.lokacija === "Splitsko-dalmatinska, Split, Dujmovača") {
             d.lokacija = "Splitsko-dalmatinska, Split, Neslanovac";
           } else if (
             d.lokacija === "Splitsko-dalmatinska, Split, Dragovode" ||
@@ -69,17 +56,16 @@ export const useData = () => {
             d.lokacija === "Splitsko-dalmatinska, Split, Smokovik"
           ) {
             d.lokacija = "Splitsko-dalmatinska, Split, Mejaši";
-          } else if (
-            d.lokacija === "Splitsko-dalmatinska, Split, Križine"
-          ) {
+          } else if (d.lokacija === "Splitsko-dalmatinska, Split, Križine") {
             d.lokacija = "Splitsko-dalmatinska, Split, Trstenik";
           } else if (
             d.lokacija === "Splitsko-dalmatinska, Split, Blatine" ||
             d.lokacija === "Splitsko-dalmatinska, Split, Škrape"
           ) {
-            d.lokacija = "Splitsko-dalmatinska, Split, Blatine-Škrape";}
+            d.lokacija = "Splitsko-dalmatinska, Split, Blatine-Škrape";
+          }
           return d;
-      })
+        })
       );
     });
   }, []);
