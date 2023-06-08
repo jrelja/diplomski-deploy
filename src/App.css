@@ -1,0 +1,524 @@
+/* GLOBALNO */
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+
+/* KARTA */
+#map {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.leaflet-container {
+
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+/* POPUP */
+.leaflet-popup-content {
+  padding: 0;
+  align-content: center;
+  margin: 5px;
+  margin-top: 15px;
+}
+
+.leaflet-popup-content-wrapper {
+  text-align: center;
+  border-radius: 13px;
+}
+
+.boje-ocjena {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-size: 100% 100%;
+  width: 120px;
+  border-radius: 18% / 90%;
+  margin: 10px;
+  font-weight: bold;
+  font-size: 1.3em;
+  border: none;
+}
+
+.boje-ocjena:hover {
+  border: 1px solid white;
+}
+
+
+th {
+  font-weight: normal;
+}
+
+/* Align first column text to the left */
+table tbody tr th:first-child {
+  text-align: left;
+}
+
+/* Align second column text to the right */
+table tbody tr th:last-child {
+  text-align: right;
+}
+
+/* MARKER */
+.cluster-marker {
+  color: #fff;
+  background: #1978c8;
+  border-radius: 50%;
+  padding: 10px;
+  width: 10px;
+  height: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -18px;
+}
+
+.mojmarker {
+  color: #fff;
+  background: #1978c8;
+  border-radius: 40% / 90%;
+  padding: 4px;
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  margin-left: -18px;
+}
+
+.zemljiste {
+  color: #fff;
+  background: #089720;
+  border-radius: 40% / 90%;
+  padding: 4px;
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  margin-left: -18px;
+}
+
+/* ODABIR GRADA */
+.dropdown-center {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.dropdown-menu {
+  min-width: 0;
+  width: auto;
+}
+
+.btn-secondary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #0d6efd;
+  --bs-btn-border-color: #0d6efd;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #0b5ed7;
+  --bs-btn-hover-border-color: #0a58ca;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #0a58ca;
+  --bs-btn-active-border-color: #0a53be;
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #0d6efd;
+  --bs-btn-disabled-border-color: #0d6efd;
+}
+
+/* GRAF */
+#tipka {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+}
+
+/* #vg-tooltip-element {
+  font-size: 20px;
+  color: #3e3c38;
+} */
+
+.tick line {
+  stroke: #c0c0bb;
+}
+
+.tick text {
+  fill: #635f5d;
+}
+
+.mark {
+  fill: #137B80;
+}
+
+.marks circle {
+  fill: #137B80;
+}
+.marks path {
+  stroke: #137B80;
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.axis-label {
+  font-size: 1.5em;
+  fill: #635f5d;
+}
+
+.grupa-graf {
+  background: rgba(255, 255, 255, 0.9);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+}
+
+.promjena-grafa-left {
+  background-image: url("./images/caret-left-fill.svg");
+  background-size: 100% 100%;
+  border-radius: 100% 100%;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: 13%;
+  bottom: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border: 2px solid grey;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.promjena-grafa-right {
+  background-image: url("./images/caret-right-fill.svg");
+  background-size: 100% 100%;
+  border-radius: 100% 100%;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  right: 13%;
+  bottom: 50%;
+  transform: translateX(50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border: 2px solid grey;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* ODABIR LAYERA */
+.layer-container {
+  position: absolute;
+  align-items: center;
+  left: 15px;
+  bottom: 65px;
+}
+
+.map-layer-control {
+  position: absolute;
+  background-color: #0d6efd;
+  bottom: 0px;
+  padding: 10px 10px 5px 10px;
+  border-radius: 6px;
+}
+
+.map-layer-okvir {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.layer-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.map-layer-control button {
+  border-radius: 3px;
+  cursor: pointer;
+  background-size: 100% 100%;
+  color: transparent;
+  border: none;
+}
+
+.map-layer-control button:hover {
+  border: white 2px solid;
+}
+
+.map-layer-control button:active {
+  border: white 2px solid;
+}
+
+.map-layer-control button:focus {
+  border: white 2px solid;
+}
+
+.layer-OSM {
+  background-image: url("images/OSM.png");
+}
+
+.layer-DOF {
+  background-image: url("images/DOF.png");
+}
+
+.layer-cijena-kvart {
+  background-image: url("images/kvartovi.png");
+}
+
+.layer-name {
+  color: white;
+}
+
+/* Adjust the width and height of the buttons based on your requirements */
+.map-layer-control button {
+  width: 65px;
+  height: 65px;
+}
+
+/* OCJENA OPIS */
+
+.ocjena-opis-container {
+  position: absolute;
+  right: 0;
+  background-color: white;
+  width: 37%;
+  height: 100%;
+  justify-content: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 20px;
+
+}
+
+.ocjena-opis-content {
+  position: relative;
+}
+
+
+.ocjena-opis {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+}
+
+.equations {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.equations div {
+  font-size: 0.8em;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin: 1.5em 0.2em;
+}
+
+.equations div:nth-child(even) {
+  background-color: #e5e5e5;
+  width: calc(100% + 2em);
+  margin-left: -1em;
+  padding: 1em;
+}
+
+.equations p {
+  font-size: 0.8em;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.equations .tekst-dodatak {
+  margin-left: 59px;
+}
+
+@media (max-width: 600px) {
+  .equations div {
+    font-size: 0.7em;
+  }
+}
+
+@media (max-width: 400px) {
+  .equations div {
+    font-size: 0.6em;
+  }
+}
+
+@media (max-width: 300px) {
+  .equations div {
+    font-size: 0.5em;
+  }
+}
+
+.ocjena-opis-close {
+  position: absolute;
+  background-image: url("./images/box-arrow-in-right.svg");
+  background-size: 100% 100%;
+  width: 35px;
+  height: 35px;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  z-index: 1;
+}
+.ocjena-opis-close:hover {
+  width: 37px;
+  height: 37px;
+}
+
+/* CIJENA/KVART */
+.header{
+  background-color: #fcbba1;
+  padding-bottom: 10px;
+  width:85%;
+  margin:0 auto;
+  bottom:20px;
+  margin-top:5%;
+  color:white;
+}
+.heading{
+padding-left:2%;
+}
+.text-muted{
+padding-left:2%;
+font-family:tohoma;
+}
+.census-info {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  top: 60%;
+  right: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  letter-spacing: 2px;
+  background: rgba(0, 0, 0, 0.8);
+  list-style: none;
+  height: 17%;
+  width: 16%;
+  font-size: 12px;
+  position: absolute;
+  z-index: 999;
+  box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
+}
+
+.census-info-hover {
+  z-index: 999;
+  top: 60%;
+  right: 20px;
+  height: 17%;
+  width: 16%;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  position: absolute;
+  letter-spacing: 2px;
+  font-size: 14px;
+  box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+ul.census-info li {
+  margin-bottom: -15px;
+}
+
+@media (max-width: 768px) {
+.census-info {
+align-items: right;
+top: 60%;
+right: 20px;
+padding: 10px 5px;
+width: 30%;
+height: 15%;
+font-size:8px;
+}
+.census-info-hover{
+z-index: 999;
+top: 60%;
+right: 20px;
+height: 18%;
+width:16%;
+padding: 10px 10px;
+border-radius: 5px;
+letter-spacing:1px;
+font-size:8px;
+}
+.heading{
+padding:none;
+
+}
+.heading h2{
+font-size:20px;
+}
+.text-muted{
+padding:none;
+}
+
+}
+
+/* LEGENDA */
+.legend {
+  position: absolute;
+  z-index: 999;
+  right: 20px;
+  bottom: 30px;
+  padding:20px 10px;
+  box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
+  font-size:12px;
+  letter-spacing:2px;
+  background: rgba(0,0,0,0.8);
+  border-radius:5px;
+  width: 16%;
+}
+.legend > div {
+  color:white;
+  position: relative;
+  display: flex;
+  height: 20px;
+  padding: 0 10px;
+}
+.legend > div::before {
+  content: "";
+  background-color: var(--color);
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  
+}
+@media (max-width: 768px) {
+  .legend > div::before {
+  width: 10px;
+  height: 10px;
+
+}
+.legend {
+  right: 20px;
+  bottom: 30px;
+  font-size:10px;
+  letter-spacing:0px;
+  width: 30%;
+  height:15%;
+}
+
+}
