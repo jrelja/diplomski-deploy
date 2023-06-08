@@ -81,6 +81,6 @@ export const useData = () => {
       setData(updatedData);
     }
   }, [data]);
-
+  console.log(data);
   return data;
 };
