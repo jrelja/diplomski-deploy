@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { json } from "d3";
 
-const url = "https://diplomski-api.vercel.app/api/v1/oglasi/prikazoglasi";
+const url = "https://diplomski-api.vercel.app/api/v1/oglasi";
 
 export const useData = () => {
   const [data, setData] = useState(null);
@@ -10,7 +10,7 @@ export const useData = () => {
       setData(
         data.data.map((d) => {
           console.log(d.datum);
-          d.datum = d.datum;
+          d.datum = new Date(d.datum);
           if (
             d.lokacija === "Splitsko-dalmatinska, Split, Zenta" ||
             d.lokacija === "Splitsko-dalmatinska, Split, Firule"
