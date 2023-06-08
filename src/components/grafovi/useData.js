@@ -8,7 +8,9 @@ export const useData = () => {
     const fetchData = async () => {
       try {
         const response = await graphData.get("/");
-        setData(response.data);
+        if (response.data) {
+          setData(response.data);
+        }
       } catch (err) {
         // Handle the error here if needed
         console.error(err);
