@@ -112,6 +112,8 @@ export const GrafCijenaVrijeme = () => {
     .range([innerHeight, 0])
     .nice();
 
+    console.log(yScale.domain());
+
   const xAxisTickFormat = timeFormat("%Y, %B");
 
   return (
