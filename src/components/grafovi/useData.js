@@ -7,9 +7,8 @@ export const useData = () => {
   const [data, setData] = useState(null);
   useEffect(() => {
     json(url).then((data) => {
-      console.log(data);
       setData(
-        data.map((d) => {
+        data.data.map((d) => {
           d.datum = new Date(d.datum);
           if (
             d.lokacija === "Splitsko-dalmatinska, Split, Zenta" ||
