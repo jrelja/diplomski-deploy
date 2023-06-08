@@ -21,7 +21,7 @@ export const useData = () => {
   }, []);
 
   useEffect(() => {
-    if (data && !data.some((d) => d.datum instanceof Date)) {
+    if (Array.isArray(data) && !data.some((d) => d.datum instanceof Date)) {
       const updatedData = data.map((d) => {
         d.datum = new Date(d.datum);
         if (
