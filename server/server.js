@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const db = require("./db");
+const db = require("./db/database");
 
 app.use(cors());
 app.use(express.json());
@@ -44,6 +44,10 @@ app.get("/oglasi/:id", async (req, res) => {
     console.error(err.message);
   }
 });
+
+
+const oglasiRouter = require('../src/routes/oglasiRoutes')
+app.use("/api/v1/oglasi")
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
