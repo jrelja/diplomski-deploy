@@ -43,7 +43,7 @@ const MojMarker = ({ isOcjenaContainerVisible, setIsOcjenaContainerVisible }) =>
 
   const getOglasi = async () => {
     try {
-      const response = await fetch("http://localhost:4000/prikazoglasi");
+      const response = await fetch("https://diplomski-api.vercel.app/api/v1/oglasi/prikazoglasi");
       const jsonData = await response.json();
       setOglasi(jsonData);
     } catch (err) {
