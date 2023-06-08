@@ -10,7 +10,7 @@ export const useData = () => {
       setData(
         data.data.map((d) => {
           console.log(d.datum);
-          d.datum = new Date(d.datum);
+          d.datum = d.datum;
           if (
             d.lokacija === "Splitsko-dalmatinska, Split, Zenta" ||
             d.lokacija === "Splitsko-dalmatinska, Split, Firule"
