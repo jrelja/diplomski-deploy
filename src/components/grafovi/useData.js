@@ -7,8 +7,8 @@ export const useData = () => {
   const [data, setData] = useState(null);
   useEffect(() => {
     json(url).then((data) => {
+      console.log(data);
       setData(
-        console.log(data);
         data.map((d) => {
           d.datum = new Date(d.datum);
           if (
