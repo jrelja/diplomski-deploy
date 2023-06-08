@@ -9,6 +9,7 @@ export const useData = () => {
     json(url).then((data) => {
       setData(
         data.map((d) => {
+          console.log(data);
           d.datum = new Date(d.datum);
           if (
             d.lokacija === "Splitsko-dalmatinska, Split, Zenta" ||
@@ -83,6 +84,5 @@ export const useData = () => {
       );
     });
   }, []);
-  console.log(data);
   return data;
 };
