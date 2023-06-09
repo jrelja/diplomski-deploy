@@ -31,26 +31,10 @@ const shortenPrice = (cijena) => {
 
 const maxZoom = 22;
 
-const MojMarker = ({ isOcjenaContainerVisible, setIsOcjenaContainerVisible }) => {
-  const handleButtonClick = () => {
-    setIsOcjenaContainerVisible(!isOcjenaContainerVisible);
-  };
-
-  const [oglasi, setOglasi] = useState([]);
+const MojMarker = ({ oglasi, isOcjenaContainerVisible, handleButtonClick }) => {
   const [bounds, setBounds] = useState(null);
   const [zoom, setZoom] = useState(14);
   const map = useMap();
-
-  const getOglasi = async () => {
-    try {
-      const response = await fetch("https://diplomski-api.vercel.app/api/v1/oglasi/prikazoglasi");
-      var jsonData = await response.json();
-      jsonData = jsonData.data;
-      setOglasi(jsonData);
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
 
   const updateMap = useCallback(() => {
     const b = map.getBounds();
@@ -64,14 +48,8 @@ const MojMarker = ({ isOcjenaContainerVisible, setIsOcjenaContainerVisible }) =>
   }, [map]);
 
   useEffect(() => {
-    getOglasi();
-  }, []);
-
-  useEffect(() => {
     updateMap();
-  }, [map, updateMap]);
 
-  useEffect(() => {
     map.on("move", updateMap);
     return () => {
       map.off("move", updateMap);
@@ -180,7 +158,6 @@ const MojMarker = ({ isOcjenaContainerVisible, setIsOcjenaContainerVisible }) =>
                 >
                   Ocjena: {cluster.properties.ocjena}
                 </button>
-                
               </div>
               <h6>
                 <table style={{ width: "100%" }}>
@@ -208,7 +185,7 @@ const MojMarker = ({ isOcjenaContainerVisible, setIsOcjenaContainerVisible }) =>
                     <tr style={{ backgroundColor: "#e5e5e5" }}>
                       <th>Cijena m²: </th>
                       <th style={{ paddingRight: "5px" }}>
-                        {cluster.properties.cijenam2} &#8364;
+                        {cluster.properties.cijenam2} €
                       </th>
                     </tr>
                   </tbody>
