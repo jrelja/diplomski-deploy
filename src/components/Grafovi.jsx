@@ -59,7 +59,7 @@ const Grafovi = () => {
       {prikaziGraf && (
         <>
           {currentGraphIndex === 0 && <GrafCijenaKvart data={data} />}
-          {currentGraphIndex === 1 && <GrafCijenaVrijeme />}
+          {currentGraphIndex === 1 && <GrafCijenaVrijeme data={data}/>}
           <div className="promjena-grafa-container">
             <PromjenaGrafa
               handleScrollLeft={handleScrollLeft}

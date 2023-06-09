@@ -19,7 +19,7 @@ import { AxisLeft } from "./AxisLeft";
 import { Marks } from "./Marks";
 import { useWindowSize } from "../windowResize";
 
-export const GrafCijenaVrijeme = () => {
+export const GrafCijenaVrijeme = ({data}) => {
 
   const croatianLocale = {
     dateTime: "%A, %e. %B %Y. %X",
@@ -75,7 +75,6 @@ export const GrafCijenaVrijeme = () => {
   const innerWidth = width - margin.left - margin.right;
   const xAxisLabelOffset = 15;
   const yAxisLabelOffset = 55;
-  const data = useData();
   if (!Array.isArray(data)) {
     return <pre></pre>;
   }
