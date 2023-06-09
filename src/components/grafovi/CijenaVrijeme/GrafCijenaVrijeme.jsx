@@ -86,7 +86,6 @@ export const GrafCijenaVrijeme = () => {
     cijena_m2: median(value, (d) => d.cijena_m2),
   }));
   medianValues.sort(ascending);
-  console.log(medianValues);
 
   const xValue = (d) => d.datum;
   const yValue = (d) => d.cijena_m2;
@@ -112,8 +111,6 @@ export const GrafCijenaVrijeme = () => {
     .domain([min(binnedData, d => d.y) - 500, max(binnedData, d => d.y) + 500])
     .range([innerHeight, 0])
     .nice();
-
-    console.log(yScale.domain());
 
   const xAxisTickFormat = timeFormat("%Y, %B");
 
