@@ -8,6 +8,7 @@ const Karta = ({
   activeTileLayer,
   isOcjenaContainerVisible,
   setIsOcjenaContainerVisible,
+  oglasi
 }) => {
   const [center, setCenter] = React.useState([43.5147, 16.4435]);
   const [mapKey, setMapKey] = React.useState(Date.now());
@@ -53,6 +54,7 @@ const Karta = ({
         <MojMarker
           isOcjenaContainerVisible={isOcjenaContainerVisible}
           setIsOcjenaContainerVisible={setIsOcjenaContainerVisible}
+          oglasi={oglasi}
         />
       </MapContainer>
     </div>

@@ -31,26 +31,15 @@ const shortenPrice = (cijena) => {
 
 const maxZoom = 22;
 
-const MojMarker = ({ isOcjenaContainerVisible, setIsOcjenaContainerVisible }) => {
+const MojMarker = ({ isOcjenaContainerVisible, setIsOcjenaContainerVisible, oglasi }) => {
   const handleButtonClick = () => {
     setIsOcjenaContainerVisible(!isOcjenaContainerVisible);
   };
 
-  const [oglasi, setOglasi] = useState([]);
   const [bounds, setBounds] = useState(null);
   const [zoom, setZoom] = useState(14);
   const map = useMap();
 
-  const getOglasi = async () => {
-    try {
-      const response = await fetch("https://diplomski-api.vercel.app/api/v1/oglasi/prikazoglasi");
-      var jsonData = await response.json();
-      jsonData = jsonData.data;
-      setOglasi(jsonData);
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
 
   const updateMap = useCallback(() => {
     const b = map.getBounds();
@@ -62,10 +51,6 @@ const MojMarker = ({ isOcjenaContainerVisible, setIsOcjenaContainerVisible }) =>
     ]);
     setZoom(map.getZoom());
   }, [map]);
-
-  useEffect(() => {
-    getOglasi();
-  }, []);
 
   useEffect(() => {
     updateMap();
