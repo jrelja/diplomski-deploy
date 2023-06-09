@@ -8,13 +8,12 @@ import {
   median,
   descending,
 } from "d3";
-import { useData } from "../useData";
 import { AxisBottom } from "./AxisBottom";
 import { AxisLeft } from "./AxisLeft";
 import { Marks } from "./Marks";
 import { useWindowSize } from "../windowResize";
 
-export const GrafCijenaKvart = () => {
+export const GrafCijenaKvart = ({ data }) => {
   let { height, width } = useWindowSize();
   height = height * 0.8;
   width = width * 0.7;
@@ -23,9 +22,8 @@ export const GrafCijenaKvart = () => {
   const innerWidth = width - margin.left - margin.right;
   const xAxisLabelOffset = 45;
 
-  const data = useData();
   if (!Array.isArray(data)) {
-    return <pre></pre>;
+    return <pre>Loading data...</pre>;
   }
 
   const groupedData = group(data, (d) => d.lokacija);
@@ -70,7 +68,8 @@ export const GrafCijenaKvart = () => {
             x={innerWidth / 2}
             y={-18}
             textAnchor="middle"
-          >Srednja cijena po kvartovima
+          >
+            Srednja cijena po kvartovima
           </text>
           <Marks
             data={medianValues}

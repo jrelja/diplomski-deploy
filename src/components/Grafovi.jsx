@@ -3,11 +3,14 @@ import TipkaGraf from './grafovi/TipkaGraf';
 import PromjenaGrafa from "./grafovi/PromjenaGrafa";
 import { GrafCijenaKvart } from "./grafovi/CijenaKvart/GrafCijenaKvart";
 import { GrafCijenaVrijeme } from "./grafovi/CijenaVrijeme/GrafCijenaVrijeme";
+import { useData } from "./grafovi/useData";
 
 const Grafovi = () => {
   const [prikaziGraf, setPrikaziGraf] = useState(false);
   const [currentGraphIndex, setCurrentGraphIndex] = useState(0); // Track the current graph index
   const grafoviRef = useRef(null);
+
+  const data = useData();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -55,7 +58,7 @@ const Grafovi = () => {
       <TipkaGraf setPrikaziGraf={setPrikaziGraf} />
       {prikaziGraf && (
         <>
-          {currentGraphIndex === 0 && <GrafCijenaKvart />}
+          {currentGraphIndex === 0 && <GrafCijenaKvart data={data} />}
           {currentGraphIndex === 1 && <GrafCijenaVrijeme />}
           <div className="promjena-grafa-container">
             <PromjenaGrafa
