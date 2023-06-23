@@ -118,38 +118,42 @@ const Kvartovi = () => {
   };
 
   return (
-    <div className="legenda">
-      <div className="">
-        <div className="">
-          {!selectedFeature && (
-            <div className="census-info-hover">
-              <strong>Prosječna cijena kvadrata stana u Splitu po kvartovima</strong>
-              <p>Odaberi kvart za detalje</p>
-            </div>
-          )}
-          {selectedFeature && (
-            <ul className="census-info">
-              <li>
-                <strong>Kvart: <h3>{selectedFeature.properties.name}</h3></strong>
-              </li>
-              <br />
-              <li>
-              <strong>Prosječna cijena kvadrata: <h2>{selectedFeature.properties.cijena_m2} €</h2> </strong>
-              </li>
-            </ul>
-          )}
-          {updatedFilteredKvartovi && (
-            <GeoJSON
-              data={updatedFilteredKvartovi}
-              style={style}
-              onEachFeature={onEachFeature}
-            />
-          )}
+    <div className="legenda-grupa">
+      {!selectedFeature && (
+        <div className="census-info">
+          <strong>
+            Prosječna cijena kvadrata stana u Splitu po kvartovima
+          </strong>
+          <p>Odaberi kvart za detalje</p>
         </div>
-      </div>
+      )}
+      {selectedFeature && (
+        <ul className="census-info-hover">
+          <li>
+            <strong>
+              Kvart: <h4>{selectedFeature.properties.name}</h4>
+            </strong>
+          </li>
+          <br />
+          <li>
+            <strong>
+              Prosječna cijena kvadrata:{" "}
+              <h4>{selectedFeature.properties.cijena_m2} €</h4>{" "}
+            </strong>
+          </li>
+        </ul>
+      )}
+      {updatedFilteredKvartovi && (
+        <GeoJSON
+          data={updatedFilteredKvartovi}
+          style={style}
+          onEachFeature={onEachFeature}
+        />
+      )}
       <Legenda />
     </div>
   );
 };
 
 export default Kvartovi;
+

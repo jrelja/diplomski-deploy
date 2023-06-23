@@ -385,27 +385,8 @@ table tbody tr th:last-child {
 }
 
 /* CIJENA/KVART */
-.header{
-  background-color: #fcbba1;
-  padding-bottom: 10px;
-  width:85%;
-  margin:0 auto;
-  bottom:20px;
-  margin-top:5%;
-  color:white;
-}
-.heading{
-padding-left:2%;
-}
-.text-muted{
-padding-left:2%;
-font-family:tohoma;
-}
 .census-info {
-  display: flex;
-  flex-direction: column;
-  align-items: right;
-  top: 60%;
+  bottom: 200px;
   right: 20px;
   padding: 10px;
   border-radius: 5px;
@@ -423,9 +404,9 @@ font-family:tohoma;
 
 .census-info-hover {
   z-index: 999;
-  top: 60%;
+  bottom: 200px;
   right: 20px;
-  height: 17%;
+  height: 135px;
   width: 16%;
   padding: 10px;
   border-radius: 5px;
@@ -437,42 +418,35 @@ font-family:tohoma;
   background: rgba(0, 0, 0, 0.8);
 }
 
-ul.census-info li {
-  margin-bottom: -15px;
+ul.census-info-hover li {
+  margin-bottom: -25px;
 }
 
 @media (max-width: 768px) {
 .census-info {
 align-items: right;
-top: 60%;
+bottom: 130px;
 right: 20px;
-padding: 10px 5px;
+padding: 10px 10px;
 width: 30%;
-height: 15%;
+height: 100px;
+border-radius: 5px;
 font-size:8px;
 }
 .census-info-hover{
-z-index: 999;
-top: 60%;
+list-style: none;
+bottom: 120px;
 right: 20px;
-height: 18%;
-width:16%;
+height: 100px;
+width: 30%;
 padding: 10px 10px;
 border-radius: 5px;
 letter-spacing:1px;
-font-size:8px;
+font-size:6px;
 }
-.heading{
-padding:none;
-
+.census-info-hover li {
+  padding: 2px;
 }
-.heading h2{
-font-size:20px;
-}
-.text-muted{
-padding:none;
-}
-
 }
 
 /* LEGENDA */
@@ -489,6 +463,7 @@ padding:none;
   border-radius:5px;
   width: 16%;
 }
+
 .legend > div {
   color:white;
   position: relative;
@@ -514,11 +489,14 @@ padding:none;
 }
 .legend {
   right: 20px;
-  bottom: 30px;
-  font-size:10px;
+  bottom: 25px;
+  font-size:8px;
   letter-spacing:0px;
   width: 30%;
-  height:15%;
+  height: 100px;
+  padding-top: 17px;
 }
-
+.legend div {
+  margin: -6px;
+}
 }
