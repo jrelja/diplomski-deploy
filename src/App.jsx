@@ -37,7 +37,7 @@ const App = () => {
     <div>
       <div className="sve">
         <Karta
-          selectedGrad={selectedGrad}
+          // selectedGrad={selectedGrad}
           activeTileLayer={activeTileLayer}
           isOcjenaContainerVisible={isOcjenaContainerVisible}
           setIsOcjenaContainerVisible={setIsOcjenaContainerVisible}
