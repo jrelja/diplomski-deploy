@@ -3,6 +3,7 @@ import TipkaGraf from './grafovi/TipkaGraf';
 import PromjenaGrafa from "./grafovi/PromjenaGrafa";
 import { GrafCijenaKvart } from "./grafovi/CijenaKvart/GrafCijenaKvart";
 import { GrafCijenaVrijeme } from "./grafovi/CijenaVrijeme/GrafCijenaVrijeme";
+import { GrafOglasiVrijeme } from "./grafovi/OglasiVrijeme/GrafOglasiVrijeme";
 import { useData } from "./grafovi/useData";
 
 const Grafovi = () => {
@@ -60,6 +61,7 @@ const Grafovi = () => {
         <>
           {currentGraphIndex === 0 && <GrafCijenaKvart data={data} />}
           {currentGraphIndex === 1 && <GrafCijenaVrijeme data={data}/>}
+          {currentGraphIndex === 2 && <GrafOglasiVrijeme data={data}/>}
           <div className="promjena-grafa-container">
             <PromjenaGrafa
               handleScrollLeft={handleScrollLeft}
