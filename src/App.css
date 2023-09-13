@@ -403,6 +403,7 @@ table tbody tr th:last-child {
 }
 
 .census-info-hover {
+  list-style: none;
   z-index: 999;
   bottom: 200px;
   right: 20px;
