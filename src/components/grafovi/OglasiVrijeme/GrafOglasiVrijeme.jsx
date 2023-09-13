@@ -17,7 +17,6 @@ import { Marks } from "./Marks";
 import { useWindowSize } from "../windowResize";
 
 export const GrafOglasiVrijeme = ({data}) => {
-  console.log(data);
   const croatianLocale = {
     dateTime: "%A, %e. %B %Y. %X",
     date: "%d.%m.%Y.",
@@ -110,7 +109,6 @@ export const GrafOglasiVrijeme = ({data}) => {
   const xAxisTickFormat = timeFormat("%d.%m.%Y.");
 
   const tickValues = timeWeeks(start, stop);
-  console.log(tickValues);
 
   return (
     <div className="grupa-graf" height={height} width={width}>
