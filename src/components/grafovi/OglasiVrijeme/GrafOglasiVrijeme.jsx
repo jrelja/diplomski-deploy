@@ -10,7 +10,6 @@ import {
   timeFormatDefaultLocale,
   timeWeeks,
 } from "d3";
-import { useData } from "../useData";
 import { AxisBottom } from "./AxisBottom";
 import { AxisLeft } from "./AxisLeft";
 import { Marks } from "./Marks";
@@ -71,7 +70,6 @@ export const GrafOglasiVrijeme = ({data}) => {
   const innerWidth = width - margin.left - margin.right;
   const xAxisLabelOffset = 15;
   const yAxisLabelOffset = 55;
-  var data = useData();
   if (!Array.isArray(data)) {
     return <pre></pre>;
   }
