@@ -17,8 +17,7 @@ import { Marks } from "./Marks";
 import { useWindowSize } from "../windowResize";
 
 export const GrafOglasiVrijeme = ({data}) => {
-  
-
+  console.log(data);
   const croatianLocale = {
     dateTime: "%A, %e. %B %Y. %X",
     date: "%d.%m.%Y.",

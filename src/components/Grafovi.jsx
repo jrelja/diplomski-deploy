@@ -29,7 +29,7 @@ const Grafovi = () => {
   const handleScrollLeft = () => {
     setCurrentGraphIndex((prevIndex) => {
       const newIndex = prevIndex - 1;
-      const totalGraphs = 2; // Total number of existing graphs
+      const totalGraphs = 3; // Total number of existing graphs
   
       // Loop to the last graph if the index becomes negative
       if (newIndex < 0) {
@@ -43,7 +43,7 @@ const Grafovi = () => {
   const handleScrollRight = () => {
     setCurrentGraphIndex((prevIndex) => {
       const newIndex = prevIndex + 1;
-      const totalGraphs = 2; // Total number of existing graphs
+      const totalGraphs = 3; // Total number of existing graphs
   
       // Loop to the first graph if the index exceeds the total number of graphs
       if (newIndex >= totalGraphs) {
