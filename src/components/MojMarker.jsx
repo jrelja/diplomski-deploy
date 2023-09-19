@@ -96,7 +96,7 @@ const MojMarker = ({ isOcjenaContainerVisible, setIsOcjenaContainerVisible, ogla
 
   return (
     <>
-      {clusters.map((cluster) => {
+      {clusters.map((cluster, index) => {
         const [longitude, latitude] = cluster.geometry.coordinates;
         const { cluster: isCluster, point_count: pointCount } =
           cluster.properties;
@@ -104,7 +104,7 @@ const MojMarker = ({ isOcjenaContainerVisible, setIsOcjenaContainerVisible, ogla
         if (isCluster) {
           return (
             <Marker
-              key={`cluster-${cluster.id}`}
+            key={`cluster-${cluster.id}-${index}`}
               position={[latitude, longitude]}
               icon={fetchIcon(
                 pointCount,
@@ -123,88 +123,88 @@ const MojMarker = ({ isOcjenaContainerVisible, setIsOcjenaContainerVisible, ogla
               }}
             />
           );
+        } else {
+          const slika =
+            cluster.properties.slika !== "NULL"
+              ? cluster.properties.slika
+              : "http://s1.rea.global/img/raw/placeholder.png";
+          const mojaCijena = cluster.properties.cijena;
+          const iconClass =
+            cluster.properties.tip === "zemljiste" ? "zemljiste" : "mojmarker";
+          const myIcon = L.divIcon({
+            iconSize: 0,
+            html: `<div class="${iconClass}">${shortenPrice(mojaCijena)}</div>`,
+          });
+          return (
+            <Marker
+            key={`oglas-${cluster.properties.oglasId}-${index}`}
+              position={[latitude, longitude]}
+              icon={myIcon}
+            >
+              <Popup>
+                <a
+                  href={`${cluster.properties.link}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <h5
+                    style={{
+                      maxWidth: "260px",
+                      wordWrap: "break-word",
+                      textAlign: "left",
+                      color: "rgb(92 88 88)",
+                    }}
+                  >
+                    {cluster.properties.naslov}
+                  </h5>
+                </a>
+                <div style={{ position: "relative" }}>
+                  <img src={slika} alt="slika" width="260" height="180" /> <br />
+                  <button
+                    className={`boje-ocjena`}
+                    style={{
+                      backgroundColor: bojaPromijeni(cluster.properties.ocjena),
+                    }}
+                    onClick={handleButtonClick}
+                  >
+                    Ocjena: {cluster.properties.ocjena}
+                  </button>
+                </div>
+                <h6>
+                  <table style={{ width: "100%" }}>
+                    <tbody>
+                      <tr style={{ backgroundColor: "#e5e5e5" }}>
+                        <th>Površina:</th>
+                        <th style={{ paddingRight: "5px" }}>
+                          {String(cluster.properties.povrsina).replaceAll(
+                            ".",
+                            ","
+                          )}{" "}
+                          m²
+                        </th>
+                      </tr>
+                      <tr>
+                        <th>Cijena: </th>
+                        <th style={{ paddingRight: "5px" }}>
+                          {new Intl.NumberFormat("de-DE", {
+                            style: "currency",
+                            currency: "EUR",
+                            maximumSignificantDigits: 6,
+                          }).format(cluster.properties.cijena)}{" "}
+                        </th>
+                      </tr>
+                      <tr style={{ backgroundColor: "#e5e5e5" }}>
+                        <th>Cijena m²: </th>
+                        <th style={{ paddingRight: "5px" }}>
+                          {cluster.properties.cijenam2} &#8364;
+                        </th>
+                      </tr>
+                    </tbody>
+                  </table>
+                </h6>
+              </Popup>
+            </Marker>
+          );
         }
-
-        const slika =
-          cluster.properties.slika !== "NULL"
-            ? cluster.properties.slika
-            : "http://s1.rea.global/img/raw/placeholder.png";
-        const mojaCijena = cluster.properties.cijena;
-        const iconClass =
-          cluster.properties.tip === "zemljiste" ? "zemljiste" : "mojmarker";
-        const myIcon = L.divIcon({
-          iconSize: 0,
-          html: `<div class="${iconClass}">${shortenPrice(mojaCijena)}</div>`,
-        });
-        return (
-          <Marker
-            key={`oglas-${cluster.properties.oglasId}`}
-            position={[latitude, longitude]}
-            icon={myIcon}
-          >
-            <Popup>
-              <a
-                href={`${cluster.properties.link}`}
-                style={{ textDecoration: "none" }}
-              >
-                <h5
-                  style={{
-                    maxWidth: "260px",
-                    wordWrap: "break-word",
-                    textAlign: "left",
-                    color: "rgb(92 88 88)",
-                  }}
-                >
-                  {cluster.properties.naslov}
-                </h5>
-              </a>
-              <div style={{ position: "relative" }}>
-                <img src={slika} alt="slika" width="260" height="180" /> <br />
-                <button
-                  className={`boje-ocjena`}
-                  style={{
-                    backgroundColor: bojaPromijeni(cluster.properties.ocjena),
-                  }}
-                  onClick={handleButtonClick}
-                >
-                  Ocjena: {cluster.properties.ocjena}
-                </button>
-              </div>
-              <h6>
-                <table style={{ width: "100%" }}>
-                  <tbody>
-                    <tr style={{ backgroundColor: "#e5e5e5" }}>
-                      <th>Površina:</th>
-                      <th style={{ paddingRight: "5px" }}>
-                        {String(cluster.properties.povrsina).replaceAll(
-                          ".",
-                          ","
-                        )}{" "}
-                        m²
-                      </th>
-                    </tr>
-                    <tr>
-                      <th>Cijena: </th>
-                      <th style={{ paddingRight: "5px" }}>
-                        {new Intl.NumberFormat("de-DE", {
-                          style: "currency",
-                          currency: "EUR",
-                          maximumSignificantDigits: 6,
-                        }).format(cluster.properties.cijena)}{" "}
-                      </th>
-                    </tr>
-                    <tr style={{ backgroundColor: "#e5e5e5" }}>
-                      <th>Cijena m²: </th>
-                      <th style={{ paddingRight: "5px" }}>
-                        {cluster.properties.cijenam2} &#8364;
-                      </th>
-                    </tr>
-                  </tbody>
-                </table>
-              </h6>
-            </Popup>
-          </Marker>
-        );
       })}
     </>
   );
