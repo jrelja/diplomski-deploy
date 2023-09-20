@@ -97,19 +97,25 @@ export const GrafCijenaVrijeme = ({data}) => {
   const [start, stop] = xScale.domain();
 
   const binnedData = bin()
-    .value(xValue)
-    .domain(xScale.domain())
-    .thresholds(timeMonths(start, stop))(data)
-    .map(array => ({
-      y: median(array, yValue),
-      x0: array.x0,
-      x1: array.x1
-        }));
+  .value(xValue)
+  .domain(xScale.domain())
+  .thresholds(timeMonths(start, stop))(data)
+  .map((array) => ({
+    y: median(array, yValue),
+    x0: array.x0,
+    x1: array.x1,
+  }))
+  .filter((d) => !isNaN(d.y)); // Filter out invalid values (NaN)
 
-    const yScale = scaleLinear()
-    .domain([min(binnedData, d => d.y) - 500, max(binnedData, d => d.y) + 500])
-    .range([innerHeight, 0])
-    .nice();
+const validYValues = binnedData.map((d) => d.y);
+const minYValue = min(validYValues);
+const maxYValue = max(validYValues);
+
+const yScale = scaleLinear()
+  .domain([minYValue - 500, maxYValue + 500]) // Use valid min and max values
+  .range([innerHeight, 0])
+  .nice();
+
 
   const xAxisTickFormat = timeFormat("%Y, %B");
 
